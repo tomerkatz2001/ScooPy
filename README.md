@@ -155,6 +155,13 @@ please **uninstall your current version of node-gyp**, then manually install the
 ```sh
 yarn global add node-gyp@8.4.1
 ```
+>running yarn result in some sort of 'fatal: unable to connect to github.com'
+
+run:
+
+```git config --global url."https://".insteadOf git://```
+
+This will saves lot of pain specially if one is behind the firewall.
 
 > VSCode builds and runs, but the Projection Boxes are empty, don't update, or show a `no such file temp.py.out` error.
 
