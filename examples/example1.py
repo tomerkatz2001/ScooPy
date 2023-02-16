@@ -11,7 +11,7 @@ if y > 2:
     x = z + 2
 else: 
     #! Start of synth number 2 of: x
-    #! 1) y = 2, z = 3 => x = 0
+    #! 1) y = 2, z = 3 => x = 5
     #! 2) y = 4, z = 3 => x = 5 #manually added
     x = y + z
     #! End of synth number 2
