@@ -1,9 +1,9 @@
 [submodule "vscode"]
 	path = vscode
 	url = https://github.com/tomerkatz2001/vscode.git
-	branch = resynth
+	branch = master
 
 [submodule "synthesizer"]
 	path = synthesizer
-	url = https://github.com/tomerkatz2001/SnippySynthesizer.git
-	branch = loopy
+	url = https://github.com/tomerkatz2001/ScooPySynthesizer.git
+	branch = master
