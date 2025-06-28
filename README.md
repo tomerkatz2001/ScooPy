@@ -172,3 +172,4 @@ python3 src/run.py <your python file>
 If that works without any errors and creates a corresponding `<your python file>.out` file, then make sure that the environment variables were set correctly, and use the _absolute path_ to the various files.
 You can inspect those by opening the developer tools inside VSCode, and using the terminal to run `process.env[<variable name>]` for each of the variables.
 
+need to pip install parsec
