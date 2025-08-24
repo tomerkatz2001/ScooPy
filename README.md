@@ -1,8 +1,8 @@
-# LooPy
+# ScooPy
 
-The source code for LooPy, the tool created for the OOPSLA 2021 paper [LooPy: Interactive Program Synthesis with Control Structures](https://dl.acm.org/doi/10.1145/3485530).
+The source code for Scoopy, the tool created for the Onward! 2025 paper [ScooPy: Enhancing Program Synthesis with Nested Example Specifications](https://doi.org/10.1145/3759429.3762619).
 
-This is a meta-repository containing the instructions, build scripts, and necessary submodules to build a version of LooPy ready to run locally.  
+This is a meta-repository containing the instructions, build scripts, and necessary submodules to build a version of ScooPy ready to run locally.  
 
 ## Content
 1. [Modules](#modules)
@@ -16,23 +16,23 @@ This is a meta-repository containing the instructions, build scripts, and necess
 7. [F.A.Q.](#faq)
 
 ## Modules
-This repository is meant for simplifying the process of building LooPy, and is really just the following two repositories:
+This repository is meant for simplifying the process of building ScooPy, and is really just the following two repositories:
 
 ### Synthesizer
-This repository contains the Enumerative Synthesizer that powers LooPy. 
+This repository contains the Enumerative Synthesizer that powers ScooPy. 
 It is an implementation of bottom-up enumerative synthesis with observational equivalence with control structures.
 
 It is a pretty straightforward (I hope) Maven project that compiles a combination Java/Scala codebase.
 Some files/directories of note are:
 
 - `src/main/scala/edu/ucsd/snippy/Snippy.scala`: The "main" file for the synthesizer, which defines multiple functions for running the synthesizer and getting a result.
-- `src/main/scala/edu/ucsd/snippy/ast`: The package containing LooPy's grammar, implemented as separate classes. The `vocab` package uses the classes from this package to define the list of components that LooPy uses.
+- `src/main/scala/edu/ucsd/snippy/ast`: The package containing ScooPy's grammar, implemented as separate classes. The `vocab` package uses the classes from this package to define the list of components that ScooPy uses.
 - `src/main/scala/edu/ucsd/snippy/eumeration`: The "simple" enumerators that, given a single context, enumerate all programs. This is in contrast to...
 - `src/main/scala/edu/ucsd/snippy/solution`: ...the "solution" enumerators, that use various strategies for initializing, running and combining the results of multiple "simple" enumerators to create the complete solution.
 - `src/main/java/edu/ucsd/snippy/parse`: An ANTLR parser in Java for Python. We use this to read the Python values from the synthesis task specifications.
 
 ### VS Code
-This repository is a fork of Microsoft's [VS Code Repository](https://github.com/microsoft/vscode) modified to include [Projection Boxes](https://cseweb.ucsd.edu/~lerner/papers/projection-boxes-chi2020.pdf) with LooPy support.
+This repository is a fork of Microsoft's [VS Code Repository](https://github.com/microsoft/vscode) modified to include [Projection Boxes](https://cseweb.ucsd.edu/~lerner/papers/projection-boxes-chi2020.pdf) with ScooPy support.
 
 To work with this codebase, a quick understanding of how Projection Boxes work can be helpful. 
 "Projection Boxes" is a live programming environment for Python, and works by running the Python code in the background,
@@ -51,7 +51,7 @@ Note that you need to provide the paths to `run.py`, your `python3` executable, 
 Finally, some files/directories of note are:
 - `src/vs/editor/contrib/rtv/RTVDisplay.ts`: This is the "main" file for Projection Boxes. It registers it as a contribution to VSCode, runs the program, and creates the boxes. The `runProgram` function is a good place to start for understanding how Projection Boxes work.
 - `src/vs/editor/contrib/rtv/RTVSynth.ts`: This file contains most of the logic for handling synthesis. Upon recognizing the `??` input, `RTVDisplay`'s code calls the `startSynthesis` function in this file, which handles the interaction from there until `stopSynthesis`. 
-- `src/vs/editor/contrib/rtv/RTVUtils.ts`: A utilities file meant to be the interface between Projection Boxes/LooPy and the operating system. Since this code is vastly different between the local and browser version, we have two `RTVUtils` files which implement the same interface for each. This file implements the local version by reading the environment variables to get the file locations, going through the process of running the code as described above, and communicating with the synthesizer. 
+- `src/vs/editor/contrib/rtv/RTVUtils.ts`: A utilities file meant to be the interface between Projection Boxes/ScooPy and the operating system. Since this code is vastly different between the local and browser version, we have two `RTVUtils` files which implement the same interface for each. This file implements the local version by reading the environment variables to get the file locations, going through the process of running the code as described above, and communicating with the synthesizer. 
 
 ## Setup
 To get these submodules, you can run the following git command:
@@ -100,19 +100,19 @@ mvn clean package -Plocal -DskipTests;
 cd ../;
 ```
 
-The `-Plocal` packages it for the local non-browser build, since LooPy currently doesn't work with the browser-based editor. 
+The `-Plocal` packages it for the local non-browser build, since ScooPy currently doesn't work with the browser-based editor. 
 
 This repo also includes a `build.sh` script that does both for you. :)
 
 ## Running
 
-> tldr; On Unix-like operating systems, you can run LooPy using the script 
+> tldr; On Unix-like operating systems, you can run ScooPy using the script 
 > 
 > ``` sh
 > ./scripts/vscode.sh
 > ```
 
-To use LooPy, you need to run this custom build of `vscode`, but it requires a set of environment variables to be correctly set before it works:
+To use ScooPy, you need to run this custom build of `vscode`, but it requires a set of environment variables to be correctly set before it works:
 
 1. `SNIPPY_UTILS`: Absolute path to `vscode/src/snippy.py`
 2. `RUNPY`: Absolute path to `vscode/src/run.py`
@@ -125,9 +125,9 @@ You can also optionally set these environment variables:
 1. `LOG_DIR`: Absolute path to where you would like the logs to be stored. By default, the operating system's temporary directory is used.
 2. `HEAP`: Value for Java's `-Xmx` argument for the synthesizer. By default, nothing is used.
 
-Once these are set, you can run LooPy with the `vscode/scripts/code` script for your operating system. 
+Once these are set, you can run ScooPy with the `vscode/scripts/code` script for your operating system. 
 
-e.g. in Bash, you can run LooPy using this command:
+e.g. in Bash, you can run ScooPy using this command:
 
 ``` sh
 cd vscode;
